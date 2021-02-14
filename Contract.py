@@ -16,6 +16,7 @@ def writeContracts():
         getEnd= data['End'][ind]
         getTeam= data['Team'][ind]
         getExpir = data['Expiration'][ind]
+        getDir = data['Director'][ind]
 
         workData = {
             "{ADDRESS}": getAddress,
@@ -27,7 +28,13 @@ def writeContracts():
             "{TODAY}": getDate
         }
 
-        doc = docx.Document("./Templates/Template" + getTeam +  ".docx")
+        if getDir == 'Y':
+            doc = docx.Document("./Templates/Template" + getTeam + "Dir.docx")
+
+        else:
+            doc = docx.Document("./Templates/Template" + getTeam +  ".docx")
+
+
         for item in workData.keys():
             for para in doc.paragraphs:
                 para.text = para.text.replace(item, workData[item])
