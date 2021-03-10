@@ -5,11 +5,11 @@ def writeContracts():
     """
     Returns a docx for every person in the csv.
     """
-    data = pd.read_csv("ContractInfo.csv")
+    data = pd.read_csv("ContractInfoSP21.csv")
     for ind in data.index:
 
         getDate= data['Date'][ind]
-        getAddress= data['Address'][ind]
+        getAddress= str(data['Address'][ind])
         getAddress = getAddress.replace('-', '\n')
         getName= data['Name'][ind]
         getStart= data['Start'][ind]
@@ -27,7 +27,7 @@ def writeContracts():
             "{EXPIRATION}": getExpir,
             "{TODAY}": getDate
         }
-
+        print(getTeam)
         if getDir == 'Y':
             doc = docx.Document("./Templates/Template" + getTeam + "Dir.docx")
 
