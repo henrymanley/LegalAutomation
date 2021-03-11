@@ -27,7 +27,6 @@ def writeContracts():
             "{EXPIRATION}": getExpir,
             "{TODAY}": getDate
         }
-        print(getTeam)
         if getDir == 'Y':
             doc = docx.Document("./Templates/Template" + getTeam + "Dir.docx")
 
